@@ -4,7 +4,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.PositionAssertions.isCompletelyBelow
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
@@ -48,8 +48,8 @@ class Task007Test {
             )
         ).check(isCompletelyBelow(withId(R.id.titleTextView)))
 
-        onView(withId(R.id.changeButton)).perform(ViewActions.click())
-        onView(withId(R.id.titleTextView)).check(matches(withText("I am an Android Developer!")))
+        onView(withId(R.id.changeButton)).perform(click())
+            onView(withId(R.id.titleTextView)).check(matches(withText("I am an Android Developer!")))
 
         activityScenarioRule.scenario.recreate()
         onView(withId(R.id.titleTextView)).check(matches(withText("I am an Android Developer!")))
